@@ -1,11 +1,17 @@
+import 'dart:async';
+
 import 'package:cookie_fly/game/cookie_fly_game.dart';
 import 'package:cookie_fly/screens/gameover_screen.dart';
 import 'package:cookie_fly/screens/menu_screen.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart'; // Importar para verificar a plataforma
+import 'package:flutter/foundation.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart'; // Importar para verificar a plataforma
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  unawaited(MobileAds.instance.initialize());
+
   final game = CookieFlyGame();
 
   Widget gameWidget = GameWidget(
